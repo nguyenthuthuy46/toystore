@@ -2,7 +2,7 @@
   "name": "asm",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -16,8 +16,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start"
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "licens
+  "license": "ISC"
+}
