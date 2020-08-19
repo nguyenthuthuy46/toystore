@@ -1,0 +1,12 @@
+h1 {
+    color: grey;
+}
+/* Styles for wrapping the search box */
+
+.main {
+    width: 70%;
+    margin: 70px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+

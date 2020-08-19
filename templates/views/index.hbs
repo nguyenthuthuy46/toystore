@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body>
+    {{>header}}
+
+    <div class="w3-content" style="max-width:1600px">
+        
+         <br>
+        <form action="/search" method="GET">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search product" name = "search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br>
+
+        <div class="w3-row-padding w3-margin-top">
+            <div id="allproduct" class="w3-container">
+                <h1>ALL PRODUCTS</h1>
+            </div>
+            <br>
+            {{#each product}}
+            <div class="w3-third w3-center w3-hover-shadow   w3-container">
+                <div class="w3-card-4">
+                    <img src="{{Image}}" style="width:100%" class="w3-hover-opacity" onclick="onClick(this)">
+                    <div class="w3-container">
+
+                        <h4><b> {{NameProduct}} </b></h4>
+                        </a>
+                        <h4> Price: {{Price}}$</h4>
+                        <button type="submit" name="add" class="w3-button w3-ripple w3-yellow"> ADD TO CART <i
+                                class="fa fa-shopping-cart"></i></button>
+                        <input type="hidden" name="productid" value='<?= $product_id ?>'> <br><br>
+
+                    </div>
+
+                </div>
+                <br> <br>
+            </div>
+            {{/each}}
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
