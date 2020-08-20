@@ -86,6 +86,10 @@ app.post('/doInsert', async (req, res) => {
         return false;
     }
 
+
+
+    
+
     else {
         let newProduct = { NameProduct: inputProductName, Price: inputProductPrice, Desciption: inputDesciption, Image: inputImage };
         let client = await MongoClient.connect(url);
