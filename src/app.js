@@ -76,6 +76,13 @@ app.post('/doInsert', async (req, res) => {
     let inputProductPrice = req.body.productPrice;
     let inputDesciption = req.body.desciption;
     let inputImage = req.body.image;
+    for(let i = 0; i < 10; i++){
+        if(inputProductName.includes(""+i)){
+            req.flash('error','Do not input number');
+            res.redirect('/insert');
+            return false;
+        }
+    }
     if (inputProductPrice > 30) {
         req.flash('error','Price had must be a  positive number');
         res.redirect('/insert');
@@ -85,11 +92,6 @@ app.post('/doInsert', async (req, res) => {
         res.redirect('/insert');
         return false;
     }
-
-
-
-    
-
     else {
         let newProduct = { NameProduct: inputProductName, Price: inputProductPrice, Desciption: inputDesciption, Image: inputImage };
         let client = await MongoClient.connect(url);
@@ -128,14 +130,18 @@ app.get('/update', async (req, res) => {
 
 })
 app.get('/insert', (req, res) => {
-    let message = req.flash('error');
+    let message= req.flash('error');
+    let error_zero;
+    let error_one;
     if (message.length > 0) {
-        message = message[0];
+        error_zero = message[0];
+        error_one = message[1];
     } else {
-        message = null;
+        error_zero = null;
+        error_one = null;
     }
 
-    res.render('insert', { error: message });
+    res.render('insert', { error_zero: error_zero, error_one : error_one });
 })
 
 const PORT = process.env.PORT || 4000;
