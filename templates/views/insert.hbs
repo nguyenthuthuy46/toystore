@@ -29,6 +29,7 @@
                     <label><b>Product Name: </b></label>
                     <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Product Name"
                         name="productName" required>
+                        <p style="color:red"> {{error}}</p>
 
                     <label><b>Price: </b></label>
                     <input class="w3-input w3-border w3-margin-bottom" type="number"  placeholder="Enter Price" name="productPrice"
@@ -44,6 +45,5 @@
 
                     <input type="submit" name="addbrand" value="ADD BRAND" class="w3-green w3-button"> <br> <br>
 </form>
- <h3 style="color:red"> {{ error }}</h3>
 
 </html>

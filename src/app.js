@@ -76,11 +76,17 @@ app.post('/doInsert', async (req, res) => {
     let inputProductPrice = req.body.productPrice;
     let inputDesciption = req.body.desciption;
     let inputImage = req.body.image;
-    if (inputProductPrice < 0) {
-        req.flash('error', 'Price had must be a  positive number');
+    if (inputProductPrice > 30) {
+        req.flash('error','Price had must be a  positive number');
         res.redirect('/insert');
         return false;
-    } else {
+    }  else if (inputProductName.length < 4){
+        req.flash('error', 'Name must be greater than 4 character');
+        res.redirect('/insert');
+        return false;
+    }
+
+    else {
         let newProduct = { NameProduct: inputProductName, Price: inputProductPrice, Desciption: inputDesciption, Image: inputImage };
         let client = await MongoClient.connect(url);
         let dbo = client.db(dbName);
@@ -100,7 +106,7 @@ app.get('/remove', async (req, res) => {
 
 app.get('/search', async (req, res) => {
     let key = req.query.search.trim();
-    
+
     let client = await MongoClient.connect(url);
     let dbo = client.db(dbName);
     let result = await dbo.collection('Product').find({ NameProduct: { $regex: key, $options: 'i' } }).toArray();
